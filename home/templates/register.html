@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="{% static 'css/register.css' %}" rel="stylesheet">
+    
+    <title>Register</title>
+</head>
+<body>
+    <div id="container">
+        {% block content %}
+        <form method="POST" id='form'>
+            {{user}}
+            <h1>Register to our website</h1>
+            {% csrf_token %}
+            <div class="inputs">
+                {% for field in form %}
+                <input type="text" class="input" placeholder="{{ field.html_name }}"><br><br>
+                {% endfor %}
+            </div>      
+            <button type="submit" class='button'>Sign Up</button><br><br>
+            <button id="signin"><a id="signinlink" href="signin/">Sign In Instead</a></button>
+            
+        </form>
+        {% endblock %}
+    </div>
+</body>
+</html>

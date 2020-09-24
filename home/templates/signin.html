@@ -1,0 +1,27 @@
+{% extends 'register.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+</head>
+<body>
+    <div id="container">
+        {% block content %}
+        <form method="POST" id='form'>
+            {{user}}
+            <h1>Sign In</h1><br><br>
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="inputdiv">
+                    <input type='text' class="input" placeholder="{{ field.html_name }}"><br><br>
+                </div>
+            {% endfor %}
+            <button type="submit" class='button'>Sign In</button><br><br>
+            <button id="signin"><a id="signinlink" href="../">Register Instead</a></button>
+        </form>
+        {% endblock %}
+    </div>
+</body>
+</html>
